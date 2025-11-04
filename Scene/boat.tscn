@@ -9,7 +9,7 @@ transparency = 1
 shading_mode = 0
 albedo_color = Color(0, 0, 0, 1)
 grow = true
-grow_amount = 0.01
+grow_amount = 0.05
 stencil_mode = 3
 stencil_flags = 1
 stencil_compare = 5
@@ -23,6 +23,7 @@ clearcoat = 0.0
 ao_light_affect = 0.28
 stencil_mode = 1
 stencil_flags = 2
+stencil_outline_thickness = 0.05
 
 [node name="boat-speed-h2" instance=ExtResource("1_sfhmh")]
 
