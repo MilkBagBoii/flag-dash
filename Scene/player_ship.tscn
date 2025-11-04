@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1jwafpfg33w"]
+[gd_scene load_steps=13 format=3 uid="uid://d1jwafpfg33w"]
 
 [ext_resource type="Script" uid="uid://g742xvniqss8" path="res://Scripts/player_ship.gd" id="1_bcxxk"]
 [ext_resource type="PackedScene" uid="uid://byqoh578q7ic1" path="res://Scene/boat.tscn" id="2_0w6q0"]
 [ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scene/player_camera.gd" id="3_0w6q0"]
+[ext_resource type="Shader" uid="uid://7ssm7dsonhwx" path="res://pixel.gdshader" id="4_sxljo"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkdy2"]
 radius = 0.68359375
@@ -50,6 +51,11 @@ stencil_outline_thickness = 0.05
 [sub_resource type="SphereMesh" id="SphereMesh_dkllt"]
 material = SubResource("StandardMaterial3D_0w6q0")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dkllt"]
+shader = ExtResource("4_sxljo")
+shader_parameter/pixel_grid = Vector2(640, 360)
+shader_parameter/color_steps = 8.0
+
 [node name="PlayerShip" type="CharacterBody3D"]
 script = ExtResource("1_bcxxk")
 
@@ -74,3 +80,20 @@ amount = 60
 lifetime = 0.48
 process_material = SubResource("ParticleProcessMaterial_sxljo")
 draw_pass_1 = SubResource("SphereMesh_dkllt")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+material = SubResource("ShaderMaterial_dkllt")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

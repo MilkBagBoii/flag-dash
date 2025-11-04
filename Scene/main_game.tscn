@@ -19,7 +19,7 @@ render_priority = 0
 shader = ExtResource("2_vh4eo")
 shader_parameter/WATER_COL = Color(0.06666667, 0.70980394, 0.89411765, 1)
 shader_parameter/WATER2_COL = Color(0.03174483, 0.6052692, 0.76540315, 1)
-shader_parameter/FOAM_COL = Color(0.7058824, 0.9372549, 0.94509804, 1)
+shader_parameter/FOAM_COL = Color(0.41950917, 0.81582695, 0.83116055, 1)
 shader_parameter/distortion_speed = 2.0
 shader_parameter/tile = Vector2(1500, 2000)
 shader_parameter/wave_speed = 2.0
@@ -31,7 +31,7 @@ shader_parameter/water_transparency = 0.8
 shader_parameter/water_depth_factor = 5.0
 shader_parameter/foam_width = 0.5
 shader_parameter/foam_edge_softness = 0.05
-shader_parameter/foam_smoothness = 20.845
+shader_parameter/foam_smoothness = 0.03
 shader_parameter/foam_distortion_speed = 0.5
 shader_parameter/foam_distortion_amount = 0.1
 

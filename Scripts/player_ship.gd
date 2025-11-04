@@ -30,7 +30,7 @@ func _process(delta: float) -> void:
 			model.rotation_degrees.x += pitch_speed * delta * sign(-model.rotation_degrees.x) 
 			
 	
-	var boost = clamp(turn_boost * (max_speed - speed)/max_speed, 0,turn_boost)
+	var boost = clamp(turn_boost * (max_speed - abs(speed))/max_speed, 0,turn_boost)
 	if (Input.is_action_pressed("ui_right")):
 		rotate_y(-delta * boost)
 		model.rotation_degrees.z += roll_speed * delta 
