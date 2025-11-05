@@ -1,60 +1,56 @@
-extends CharacterBody3D
+extends RigidBody3D
 
-@export var acceleration: float = 25
-@export var deceleration: float = 100
+@export var acceleration: float = 100
+@export var deceleration: float = 25
 @export var max_speed: float = 100
-@export var turn_boost: float = 3
+@export var turn_speed: float = 15
 @onready var model: Node3D = $Model
 @onready var splash_emitter: GPUParticles3D = $"Splash Emitter"
 
-var speed: float = 0
-var max_roll: float = 20
-var max_pitch: float = 10
-var roll_speed: float = 60
-var pitch_speed: float = 10
-func _process(delta: float) -> void:
+
+var max_ang_damp:float = 5
+var prev_lin: Vector3
+var prev_ang: Vector3
+
+func _physics_process(delta: float) -> void:
 	do_particals()
-	if (Input.is_action_pressed("ui_up")):
-		if (speed < max_speed):
-			speed = lerpf(speed, max_speed, acceleration * delta / 100)
-			model.rotation_degrees.x -= pitch_speed * delta 
-			model.rotation_degrees.x = clampf(model.rotation_degrees.x, -max_pitch,max_pitch)
-	elif(Input.is_action_pressed("ui_down")):
-		if (speed > -max_speed):
-			speed = lerpf(speed, -max_speed, acceleration * delta / 100)
-			model.rotation_degrees.x += pitch_speed * delta 
-			model.rotation_degrees.x = clampf(model.rotation_degrees.x, -max_pitch,max_pitch)
-	else:
-		if (speed != 0):
-			speed = lerpf(speed, 0, deceleration * delta / 100)
-			model.rotation_degrees.x += pitch_speed * delta * sign(-model.rotation_degrees.x) 
-			
+	if (Input.is_action_pressed("ui_up") && linear_velocity.length() < max_speed):
+		apply_force(-transform.basis.z * acceleration)
+	if(Input.is_action_pressed("ui_down") && linear_velocity.length() < max_speed):
+		apply_force(transform.basis.z * acceleration)
 	
-	var boost = clamp(turn_boost * (max_speed - abs(speed))/max_speed, 0,turn_boost)
+	if (Input.is_action_pressed("ui_accept")):
+		pass
 	if (Input.is_action_pressed("ui_right")):
-		rotate_y(-delta * boost)
-		model.rotation_degrees.z += roll_speed * delta 
-		model.rotation_degrees.z = clampf(model.rotation_degrees.z, -max_roll,max_roll)
-	elif (Input.is_action_pressed("ui_left")):
-		rotate_y(delta * boost)
-		model.rotation_degrees.z -= roll_speed * delta 
-		model.rotation_degrees.z = clampf(model.rotation_degrees.z, -max_roll,max_roll)
-	else:
-		model.rotation_degrees.z += roll_speed * delta * sign(-model.rotation_degrees.z) 
-	velocity = -transform.basis.z * speed
-	move_and_slide()
+		apply_torque(Vector3.UP * -turn_speed)
+	elif  (Input.is_action_pressed("ui_left")):
+		apply_torque(Vector3.UP * turn_speed)
+	calc_model_transform(delta)
 	
 	
+	angular_damp = clamp(max_ang_damp * (linear_velocity.length() / max_speed), 0, max_ang_damp)
 func do_particals():
-	print(model.rotation_degrees.z)
-	if(abs(speed) > 20):
-		if (model.rotation_degrees.z < -5):
-			splash_emitter.emitting = true
-			splash_emitter.rotation_degrees.y = 0
-		elif (model.rotation_degrees.z > 5):
-			splash_emitter.emitting = true
-			splash_emitter.rotation_degrees.y = 180
-		else:
-			splash_emitter.emitting = false
+	if (linear_velocity.length() > max_speed/2):
+		splash_emitter.emitting = true
 	else:
 		splash_emitter.emitting = false
+
+func calc_model_transform(delta):
+	
+	var change_lin: Vector3 = linear_velocity - prev_lin
+	var change_ang: Vector3 = angular_velocity - prev_ang
+
+	var forward := -model.global_transform.basis.z
+
+	var x := 0.0
+	var len := change_lin.length()
+	if len > 0.0001:
+		var change_dot: float = (change_lin / len).dot(forward)
+		x = len * change_dot * 10
+
+	print(change_ang.y)
+
+	model.rotation_degrees = lerp(model.rotation_degrees,Vector3(x, model.rotation_degrees.y, change_ang.y * 500), delta)
+
+	prev_lin = linear_velocity
+	prev_ang = angular_velocity

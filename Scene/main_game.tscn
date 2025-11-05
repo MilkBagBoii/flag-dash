@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b8vlivg1yuxts"]
+[gd_scene load_steps=9 format=3 uid="uid://b8vlivg1yuxts"]
 
 [ext_resource type="PackedScene" uid="uid://d1jwafpfg33w" path="res://Scene/player_ship.tscn" id="1_jv8gs"]
 [ext_resource type="Shader" uid="uid://d3xy3765ib8hq" path="res://water.gdshader" id="2_vh4eo"]
@@ -38,6 +38,8 @@ shader_parameter/foam_distortion_amount = 0.1
 [sub_resource type="BoxMesh" id="BoxMesh_1btii"]
 material = SubResource("ShaderMaterial_htkpn")
 
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_vh4eo"]
+
 [node name="MainGame" type="Node"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -50,6 +52,12 @@ environment = SubResource("Environment_htkpn")
 [node name="PlayerShip" parent="." instance=ExtResource("1_jv8gs")]
 transform = Transform3D(1.0086795, 0, 0, 0, 1.0086795, 0, 0, 0, 1.0086795, 0.038704157, 0.054397702, 0.2479825)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="Waves" type="MeshInstance3D" parent="."]
 transform = Transform3D(13643.166, 0, 0, 0, 1, 0, 0, 0, 10959.146, 0, -0.22043467, 0)
 mesh = SubResource("BoxMesh_1btii")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028976858, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_vh4eo")
