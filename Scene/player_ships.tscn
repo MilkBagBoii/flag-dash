@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3v6tvdb70xhb"]
+
+[ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_457h8"]
+[ext_resource type="Script" uid="uid://g742xvniqss8" path="res://Scripts/player_ship.gd" id="2_8068w"]
+[ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scripts/player_camera.gd" id="3_8068w"]
+[ext_resource type="Shader" uid="uid://7ssm7dsonhwx" path="res://pixel.gdshader" id="4_vj4il"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8dgra"]
+shader = ExtResource("4_vj4il")
+shader_parameter/pixel_grid = Vector2(480, 240)
+shader_parameter/color_steps = 8.0
+
+[node name="Ship" instance=ExtResource("1_457h8")]
+script = ExtResource("2_8068w")
+
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 0.945825, 0.3246769, 0, -0.3246769, 0.945825, 0, 2.4944844, 1.736444)
+top_level = true
+script = ExtResource("3_8068w")
+
+[node name="Control" type="Control" parent="." index="4"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control" index="0"]
+material = SubResource("ShaderMaterial_8dgra")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

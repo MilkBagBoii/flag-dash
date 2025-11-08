@@ -1,82 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://d1jwafpfg33w"]
+[gd_scene load_steps=5 format=3 uid="uid://d1jwafpfg33w"]
 
-[ext_resource type="Script" uid="uid://g742xvniqss8" path="res://Scripts/player_ship.gd" id="1_bcxxk"]
-[ext_resource type="PackedScene" uid="uid://byqoh578q7ic1" path="res://Scene/boat.tscn" id="2_0w6q0"]
-[ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scene/player_camera.gd" id="3_0w6q0"]
-[ext_resource type="Script" uid="uid://br3upxf2okdt5" path="res://Scripts/smoothboat.gd" id="3_dkllt"]
+[ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_0w6q0"]
+[ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scripts/player_camera.gd" id="3_0w6q0"]
 [ext_resource type="Shader" uid="uid://7ssm7dsonhwx" path="res://pixel.gdshader" id="4_sxljo"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dkllt"]
-friction = 0.1
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkdy2"]
-radius = 0.68359375
-height = 3.5219374
-
-[sub_resource type="Curve" id="Curve_0w6q0"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.30769232, 0.516854), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_j5d8q"]
-curve = SubResource("Curve_0w6q0")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_sxljo"]
-emission_shape_offset = Vector3(0.76, 0, 0)
-emission_shape_scale = Vector3(0.16, 0.21, 0.895)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(1, 1, 0)
-spread = 11.88
-flatness = 1.0
-initial_velocity_min = 4.0
-initial_velocity_max = 4.0
-attractor_interaction_enabled = false
-scale_curve = SubResource("CurveTexture_j5d8q")
-turbulence_noise_scale = 8.008
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sxljo"]
-render_priority = 1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.05
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0w6q0"]
-next_pass = SubResource("StandardMaterial3D_sxljo")
-stencil_mode = 1
-stencil_flags = 2
-stencil_outline_thickness = 0.05
-
-[sub_resource type="SphereMesh" id="SphereMesh_dkllt"]
-material = SubResource("StandardMaterial3D_0w6q0")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_dkllt"]
 shader = ExtResource("4_sxljo")
 shader_parameter/pixel_grid = Vector2(640, 360)
 shader_parameter/color_steps = 8.0
 
-[node name="PlayerShip" type="RigidBody3D"]
-axis_lock_angular_x = true
-axis_lock_angular_z = true
-mass = 2.0
-physics_material_override = SubResource("PhysicsMaterial_dkllt")
-can_sleep = false
-freeze_mode = 1
-script = ExtResource("1_bcxxk")
+[node name="Ship" type="Node3D"]
 
-[node name="Model" parent="." instance=ExtResource("2_0w6q0")]
-top_level = true
-script = ExtResource("3_dkllt")
-offset = Vector2(0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(-0.013648011, 4.3707317e-08, 0.99990684, 0.99990684, 5.965735e-10, 0.013648011, 0, 1, -4.371139e-08, 8.055631e-09, 0.44271886, -1.6914113)
-shape = SubResource("CapsuleShape3D_dkdy2")
+[node name="PlayerShip" parent="." instance=ExtResource("1_0w6q0")]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.82946724, -0.34477916, 0.4394445, 0.02436881, 0.8083406, 0.5882106, -0.5580236, -0.47719264, 0.6788939, 12.157942, 15.530732, 15.6904125)
@@ -86,13 +21,6 @@ current = true
 size = 30.0
 near = 0.001
 script = ExtResource("3_0w6q0")
-
-[node name="Splash Emitter" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.0019199955, 0, -0.99999815, 0, 1, 0, 0.99999815, 0, 0.0019199955, -0.011262536, 0, -2.9273164)
-amount = 60
-lifetime = 0.48
-process_material = SubResource("ParticleProcessMaterial_sxljo")
-draw_pass_1 = SubResource("SphereMesh_dkllt")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3

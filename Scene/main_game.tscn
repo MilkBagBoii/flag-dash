@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://b8vlivg1yuxts"]
 
-[ext_resource type="PackedScene" uid="uid://d1jwafpfg33w" path="res://Scene/player_ship.tscn" id="1_jv8gs"]
+[ext_resource type="PackedScene" uid="uid://b3v6tvdb70xhb" path="res://Scene/player_ships.tscn" id="2_htkpn"]
 [ext_resource type="Shader" uid="uid://d3xy3765ib8hq" path="res://water.gdshader" id="2_vh4eo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv8gs"]
@@ -20,11 +20,11 @@ shader = ExtResource("2_vh4eo")
 shader_parameter/WATER_COL = Color(0.06666667, 0.70980394, 0.89411765, 1)
 shader_parameter/WATER2_COL = Color(0.03174483, 0.6052692, 0.76540315, 1)
 shader_parameter/FOAM_COL = Color(0.41950917, 0.81582695, 0.83116055, 1)
-shader_parameter/distortion_speed = 2.0
+shader_parameter/distortion_speed = 6.45
 shader_parameter/tile = Vector2(1500, 2000)
 shader_parameter/wave_speed = 2.0
-shader_parameter/wave_amplitude = 0.1
-shader_parameter/wave_frequency = 1.5
+shader_parameter/wave_amplitude = 0.5
+shader_parameter/wave_frequency = 0.5
 shader_parameter/time_offset = 0.0
 shader_parameter/water_size = Vector2(128, 128)
 shader_parameter/water_transparency = 0.8
@@ -49,9 +49,6 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_htkpn")
 
-[node name="PlayerShip" parent="." instance=ExtResource("1_jv8gs")]
-transform = Transform3D(1.0086795, 0, 0, 0, 1.0086795, 0, 0, 0, 1.0086795, 0.038704157, 0.054397702, 0.2479825)
-
 [node name="Waves" type="MeshInstance3D" parent="."]
 transform = Transform3D(13643.166, 0, 0, 0, 1, 0, 0, 0, 10959.146, 0, -0.22043467, 0)
 mesh = SubResource("BoxMesh_1btii")
@@ -61,3 +58,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.028976858, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 shape = SubResource("WorldBoundaryShape3D_vh4eo")
+
+[node name="Ship" parent="." instance=ExtResource("2_htkpn")]
