@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://daducu2je0iv5"]
+
+[ext_resource type="Script" uid="uid://deagbc4684jk5" path="res://Scripts/flag.gd" id="1_f0web"]
+[ext_resource type="PackedScene" uid="uid://c2sdid7tv6x6w" path="res://Assets/FloatyFlag.glb" id="1_khqe1"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_khqe1"]
+radius = 1.2099913
+
+[node name="Flag" type="Node3D"]
+script = ExtResource("1_f0web")
+
+[node name="FloatyFlag" parent="." instance=ExtResource("1_khqe1")]
+transform = Transform3D(1.8779979, 0, 0, 0, 1.8779979, 0, 0, 0, 1.8779979, 0, 0, 0)
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5328866, 0)
+shape = SubResource("SphereShape3D_khqe1")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

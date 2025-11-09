@@ -2,7 +2,7 @@ extends Camera3D
 
 
 @export var interp_speed: float = 25
-@export var offset: Vector2 = Vector2(0,4)
+@export var offset: Vector2 = Vector2(0,8)
 @onready var top: Node3D = $"../Model"
 
 func _process(delta: float) -> void:

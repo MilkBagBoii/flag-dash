@@ -1,3 +1,4 @@
 extends Node
 
-var first_place
+var leader_board: Array[Ship]
+var flag_node: PackedScene

@@ -1,7 +1,7 @@
 extends RigidBody3D
 class_name Ship
 
-@export var acceleration: float = 100
+@export var acceleration: float = 200
 @export var deceleration: float = 25
 @export var max_speed: float = 100
 @export var turn_speed: float = 15
@@ -12,8 +12,13 @@ var max_ang_damp:float = 5
 var prev_lin: Vector3
 var prev_ang: Vector3
 func _physics_process(delta: float) -> void:
+	if (linear_velocity.length() <= 0.2):
+		gravity_scale = 0
+	else:
+		gravity_scale = 1
 	do_particals()
 	calc_model_transform(delta)
+	angular_damp = clamp(max_ang_damp * (linear_velocity.length() / max_speed), 0, max_ang_damp)
 func do_particals():
 	if (linear_velocity.length() > max_speed/2):
 		splash_emitter.emitting = true

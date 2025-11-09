@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://byqoh578q7ic1" path="res://Scene/boat.tscn" id="2_r61vp"]
 [ext_resource type="Script" uid="uid://br3upxf2okdt5" path="res://Scripts/smoothboat.gd" id="3_uq5ii"]
 
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dkllt"]
-friction = 0.1
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vt42t"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dkdy2"]
 radius = 0.68359375
@@ -57,7 +56,7 @@ material = SubResource("StandardMaterial3D_0w6q0")
 axis_lock_angular_x = true
 axis_lock_angular_z = true
 mass = 2.0
-physics_material_override = SubResource("PhysicsMaterial_dkllt")
+physics_material_override = SubResource("PhysicsMaterial_vt42t")
 can_sleep = false
 freeze_mode = 1
 script = ExtResource("1_vt42t")
@@ -65,7 +64,6 @@ script = ExtResource("1_vt42t")
 [node name="Model" parent="." instance=ExtResource("2_r61vp")]
 top_level = true
 script = ExtResource("3_uq5ii")
-offset = Vector2(0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(-0.013648011, 4.3707317e-08, 0.99990684, 0.99990684, 5.965735e-10, 0.013648011, 0, 1, -4.371139e-08, 8.055631e-09, 0.44271886, -1.6914113)
