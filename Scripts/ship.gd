@@ -1,54 +1,57 @@
-extends RigidBody3D
+extends CharacterBody3D
 class_name Ship
 
-@export var acceleration: float = 200
-@export var deceleration: float = 25
+@export var acceleration: float = 150
+@export var deceleration: float = 50
+@export var friction: float = 20
 @export var max_speed: float = 100
-@export var turn_speed: float = 15
+@export var turn_speed: float = 5
+@export var rotation_boost_curve: Curve
 @onready var model: Node3D = $Model
 @onready var splash_emitter: GPUParticles3D = $"Splash Emitter"
 
-var max_ang_damp:float = 5
-var prev_lin: Vector3
-var prev_ang: Vector3
+
 
 var holding_flag: bool = false
 var held_time: float = 0
 
 func _process(delta: float) -> void:
-	pass
-
+	print((floor(rotation_boost_curve.sample(velocity.length() / max_speed))))
+	
+	do_friction()
+	check_velocity()
 func _physics_process(delta: float) -> void:
-	if (linear_velocity.length() <= 0.2):
-		gravity_scale = 0
-	else:
-		gravity_scale = 1
 	do_particals()
-	calc_model_transform(delta)
-	angular_damp = clamp(max_ang_damp * (linear_velocity.length() / max_speed), 0, max_ang_damp)
+	move_and_slide()
 func do_particals():
-	if (linear_velocity.length() > max_speed/2):
+	if (velocity.length() > max_speed/2):
 		splash_emitter.emitting = true
 	else:
 		splash_emitter.emitting = false
 
 
-func calc_model_transform(delta):
+
+
+func accelerate_forward():
+	velocity += -transform.basis.z * acceleration * get_process_delta_time()
 	
-	var change_lin: Vector3 = linear_velocity - prev_lin
-	var change_ang: Vector3 = angular_velocity - prev_ang
 
-	var forward := -model.global_transform.basis.z
+func accelerate_backward():
+	velocity += transform.basis.z * acceleration * get_process_delta_time()
+	
+func turn_right():
+	rotate_y(-turn_speed * get_process_delta_time() / rotation_boost_curve.sample(velocity.length() / max_speed))
+	
+func turn_left():
+	rotate_y(turn_speed * get_process_delta_time() / rotation_boost_curve.sample(velocity.length() / max_speed))
+	
+func brake():
+	velocity -= velocity.normalized() * deceleration * get_process_delta_time()
 
-	var x := 0.0
-	var mag := change_lin.length()
-	if mag > 0.0001:
-		var change_dot: float = (change_lin / mag).dot(forward)
-		x = mag * change_dot * 15
+func do_friction():
+	if velocity.length() > 0:
+		velocity -= velocity.normalized() * friction * get_process_delta_time()
 
-	print(change_ang.y)
-
-	model.rotation_degrees = lerp(model.rotation_degrees,Vector3(x, model.rotation_degrees.y, change_ang.y * 500), delta)
-
-	prev_lin = linear_velocity
-	prev_ang = angular_velocity
+func check_velocity():
+	if velocity.length() > max_speed:
+		velocity -= velocity * 2 * get_process_delta_time() 

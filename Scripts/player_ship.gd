@@ -1,17 +1,20 @@
 extends Ship
 
 
-func _physics_process(delta: float) -> void:
-	if (Input.is_action_pressed("ui_up") && linear_velocity.length() < max_speed):
-		apply_force(-transform.basis.z * acceleration)
-	if(Input.is_action_pressed("ui_down") && linear_velocity.length() < max_speed):
-		apply_force(transform.basis.z * acceleration)
-	
+func _process(delta: float) -> void:
 	if (Input.is_action_pressed("ui_accept")):
-		pass
+		brake()
+	elif (Input.is_action_pressed("ui_up")):
+		accelerate_forward()
+	elif(Input.is_action_pressed("ui_down")):
+		accelerate_backward()
+	
 	
 	if (Input.is_action_pressed("ui_right")):
-		apply_torque(Vector3.UP * -turn_speed)
+		turn_right()
 	elif  (Input.is_action_pressed("ui_left")):
-		apply_torque(Vector3.UP * turn_speed)
+		turn_left()
+		
+	super._process(delta)
+func _physics_process(delta: float) -> void:
 	super._physics_process(delta)

@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://ot5o8f2jh0b4"]
+
+[ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_g8j5r"]
+[ext_resource type="Script" uid="uid://dxobs530nrnbe" path="res://Scripts/ship_ai.gd" id="2_t1gok"]
+
+[node name="AI_Ships" instance=ExtResource("1_g8j5r")]
+script = ExtResource("2_t1gok")
+rotation_boost_curve = null
+
+[node name="Brain" type="NavigationAgent3D" parent="." index="3"]

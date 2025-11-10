@@ -1,11 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3v6tvdb70xhb"]
+[gd_scene load_steps=6 format=3 uid="uid://b3v6tvdb70xhb"]
 
 [ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_457h8"]
 [ext_resource type="Script" uid="uid://g742xvniqss8" path="res://Scripts/player_ship.gd" id="2_8068w"]
 [ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scripts/player_camera.gd" id="3_8068w"]
 [ext_resource type="Shader" uid="uid://7ssm7dsonhwx" path="res://pixel.gdshader" id="4_vj4il"]
-
-[sub_resource type="SphereMesh" id="SphereMesh_vj4il"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dgra"]
 shader = ExtResource("4_vj4il")
@@ -15,10 +13,7 @@ shader_parameter/color_steps = 8.0
 [node name="Ship" instance=ExtResource("1_457h8")]
 script = ExtResource("2_8068w")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="0"]
-mesh = SubResource("SphereMesh_vj4il")
-
-[node name="Camera3D" type="Camera3D" parent="." index="4"]
+[node name="Camera3D" type="Camera3D" parent="." index="3"]
 transform = Transform3D(0.49648586, -0.5377493, 0.68141586, 0.0070440476, 0.7874709, 0.61631167, -0.86801624, -0.3011901, 0.39475608, 60.32001, 59.231003, 34.36828)
 top_level = true
 projection = 1
@@ -26,7 +21,7 @@ size = 26.990631
 near = 0.001
 script = ExtResource("3_8068w")
 
-[node name="Control" type="Control" parent="." index="5"]
+[node name="Control" type="Control" parent="." index="4"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
