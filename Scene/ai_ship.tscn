@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dffl3eg2se876"]
+
+[ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_e1qcd"]
+[ext_resource type="Script" uid="uid://dxobs530nrnbe" path="res://Scripts/ship_ai.gd" id="1_nigg2"]
+
+[node name="Ai_ship" type="Node3D"]
+script = ExtResource("1_nigg2")
+
+[node name="Ship" parent="." instance=ExtResource("1_e1qcd")]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]

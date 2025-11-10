@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var interp_speed: float = 25
+@export var interp_speed: float = 50
 @onready var top: Node3D = $".."
 
 func _process(delta: float) -> void:

@@ -1,4 +1,4 @@
 extends Node
 
 var leader_board: Array[Ship]
-var flag_node: PackedScene
+const FLAG = preload("uid://daducu2je0iv5")

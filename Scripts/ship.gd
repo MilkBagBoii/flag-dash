@@ -11,6 +11,13 @@ class_name Ship
 var max_ang_damp:float = 5
 var prev_lin: Vector3
 var prev_ang: Vector3
+
+var holding_flag: bool = false
+var held_time: float = 0
+
+func _process(delta: float) -> void:
+	pass
+
 func _physics_process(delta: float) -> void:
 	if (linear_velocity.length() <= 0.2):
 		gravity_scale = 0

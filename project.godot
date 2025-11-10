@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Game_Manager="*res://Scripts/game_manager.gd"
 
+[physics]
+
+3d/run_on_separate_thread=true
+common/physics_interpolation=true
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
