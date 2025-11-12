@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://dlx273o0nakfx"]
+
+[sub_resource type="GDScript" id="GDScript_y3umc"]
+script/source = "extends Node
+var Points : int = 0
+var Name : String = \"Boat Name\"
+var Boat : Ship
+
+func  _ready() -> void:
+	pass
+
+func _process(delta: float) -> void:
+	pass
+
+func FindBoat():
+	Boat = get_parent().get
+	
+	pass
+"
+
+[node name="PointsTracker" type="Node"]
+script = SubResource("GDScript_y3umc")
