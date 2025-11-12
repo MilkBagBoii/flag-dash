@@ -14,6 +14,8 @@ class_name Ship
 
 var holding_flag: bool = false
 var held_time: float = 0
+var points: int = 0
+var boatName : String
 
 func _process(delta: float) -> void:
 	print((floor(rotation_boost_curve.sample(velocity.length() / max_speed))))
