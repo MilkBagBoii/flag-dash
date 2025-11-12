@@ -16,5 +16,6 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 	if (cur_cd > 0.01): return
 	if (body is Ship): 
 		holder = body
+		Game_Manager.current_holder = body
 		cur_cd = grab_cd
 	pass # Replace with function body.
