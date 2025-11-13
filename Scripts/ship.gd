@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 	do_friction()
 	check_velocity()
 	check_if_holding_flag()
+	check_to_gain_Points()
 func _physics_process(delta: float) -> void:
 	do_particals()
 	move_and_slide()
