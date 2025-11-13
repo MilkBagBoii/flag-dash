@@ -1,9 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3v6tvdb70xhb"]
+[gd_scene load_steps=9 format=3 uid="uid://b3v6tvdb70xhb"]
 
 [ext_resource type="PackedScene" uid="uid://bhassraaeynnq" path="res://Scene/ship.tscn" id="1_457h8"]
 [ext_resource type="Script" uid="uid://g742xvniqss8" path="res://Scripts/player_ship.gd" id="2_8068w"]
 [ext_resource type="Script" uid="uid://dssbjmuq5ahxw" path="res://Scripts/player_camera.gd" id="3_8068w"]
 [ext_resource type="Shader" uid="uid://7ssm7dsonhwx" path="res://pixel.gdshader" id="4_vj4il"]
+[ext_resource type="Texture2D" uid="uid://dh5vr2inrk4r7" path="res://Assets/Sprites/UI_Flat_Bar12a.png" id="5_ar1yk"]
+[ext_resource type="Texture2D" uid="uid://c8ixtrmqpib3x" path="res://Assets/Sprites/UI_Flat_Bar10a.png" id="5_m7ntn"]
+[ext_resource type="Texture2D" uid="uid://cayv4qtmvnw37" path="res://Assets/Sprites/UI_Flat_BarFill01a.png" id="6_m7ntn"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8dgra"]
 shader = ExtResource("4_vj4il")
@@ -37,3 +40,22 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="Control/ColorRect" index="0"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -111.0
+offset_top = -142.39499
+offset_right = 111.00037
+offset_bottom = -86.39563
+grow_horizontal = 2
+grow_vertical = 0
+max_value = 1.0
+nine_patch_stretch = true
+texture_under = ExtResource("5_m7ntn")
+texture_over = ExtResource("5_ar1yk")
+texture_progress = ExtResource("6_m7ntn")

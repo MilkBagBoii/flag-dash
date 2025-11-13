@@ -1,4 +1,5 @@
 extends Ship
+@onready var speed_bar: TextureProgressBar = $Control/ColorRect/TextureProgressBar
 
 
 func _process(delta: float) -> void:
@@ -14,7 +15,7 @@ func _process(delta: float) -> void:
 		turn_right()
 	elif  (Input.is_action_pressed("ui_left")):
 		turn_left()
-		
+		speed_bar.value = velocity.length() / max_speed
 	super._process(delta)
 func _physics_process(delta: float) -> void:
 	super._physics_process(delta)
