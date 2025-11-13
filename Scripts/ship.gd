@@ -20,6 +20,9 @@ var boatName : String
 var time_accumulation : float = 0
 
 func _process(delta: float) -> void:
+	#print((floor(rotation_boost_curve.sample(velocity.length() / max_speed))))
+	
+	#print(velocity.length())
 	do_drift()
 	do_friction()
 	check_velocity()
