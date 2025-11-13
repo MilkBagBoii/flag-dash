@@ -1,4 +1,5 @@
 extends Node3D
+class_name Flag 
 
 var holder: Node3D = null
 var interp_speed: float = 10

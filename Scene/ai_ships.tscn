@@ -5,12 +5,6 @@
 
 [node name="AI_Ships" instance=ExtResource("1_g8j5r")]
 script = ExtResource("2_t1gok")
-acceleration = null
-deceleration = null
-friction = null
-max_speed = null
-turn_speed = null
-drift_differential = null
 rotation_boost_curve = null
 
 [node name="Brain" type="NavigationAgent3D" parent="." index="3"]

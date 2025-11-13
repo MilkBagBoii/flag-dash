@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8vlivg1yuxts"]
+[gd_scene load_steps=10 format=3 uid="uid://b8vlivg1yuxts"]
 
 [ext_resource type="PackedScene" uid="uid://b3v6tvdb70xhb" path="res://Scene/player_ships.tscn" id="2_htkpn"]
 [ext_resource type="Shader" uid="uid://d3xy3765ib8hq" path="res://water.gdshader" id="2_vh4eo"]
 [ext_resource type="PackedScene" uid="uid://daducu2je0iv5" path="res://Scene/flag.tscn" id="3_htkpn"]
+[ext_resource type="PackedScene" uid="uid://ot5o8f2jh0b4" path="res://Scene/ai_ships.tscn" id="4_1btii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_jv8gs"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -56,3 +57,6 @@ mesh = SubResource("BoxMesh_1btii")
 
 [node name="Flag" parent="." instance=ExtResource("3_htkpn")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095404625, 0.15876669, -22.186268)
+
+[node name="AI_Ships" parent="." instance=ExtResource("4_1btii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.644048, 0, 2.743703)
