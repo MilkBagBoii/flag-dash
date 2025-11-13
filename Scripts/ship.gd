@@ -22,7 +22,6 @@ var time_accumulation : float = 0
 func _process(delta: float) -> void:
 	#print((floor(rotation_boost_curve.sample(velocity.length() / max_speed))))
 	
-	print(velocity.length())
 	do_drift()
 	do_friction()
 	check_velocity()
@@ -61,13 +60,9 @@ func gain_points():
 
 func accelerate_forward():
 	velocity += -transform.basis.z * acceleration * get_process_delta_time()
-	
 
 func accelerate_backward():
-	if (velocity.length() >= max_speed/2):
-		velocity += transform.basis.z * acceleration * get_process_delta_time() * 0.01
-	else:
-		velocity += transform.basis.z * acceleration * get_process_delta_time()
+	velocity += transform.basis.z * acceleration * get_process_delta_time()
 	
 func turn_right():
 	rotate_y(-turn_speed * get_process_delta_time() / rotation_boost_curve.sample(velocity.length() / max_speed))
@@ -81,13 +76,31 @@ func brake():
 func do_friction():
 	if velocity.length() > 0:
 		velocity -= velocity.normalized() * friction * get_process_delta_time()
-
+	pass
 func check_velocity():
 	if velocity.length() > max_speed:
 		velocity -= velocity * 2 * get_process_delta_time() 
 func do_drift():
-	var drift_vector = -model.transform.basis.z * (velocity.length() * drift_differential * abs(velocity.normalized().dot(-model.transform.basis.z) - 1))
-	if (drift_vector.length_squared() > 0.0):
-		velocity -= velocity.normalized() * drift_vector.length()
-		velocity += drift_vector
-	
+	if velocity.length_squared() == 0.0:
+		return
+
+	var forward := -model.transform.basis.z.normalized()
+	var vel_dir := velocity.normalized()
+
+	var dot := vel_dir.dot(forward) 
+
+
+	var dir_sign = sign(dot)
+	if dir_sign == 0.0:
+		dir_sign = 1.0  
+
+	var drift_dir = forward * dir_sign
+	var misalignment = 1.0 - abs(dot)
+	var drift_amount = velocity.length() * drift_differential * misalignment
+	if drift_amount <= 0.0:
+		return
+
+	var drift_vector = drift_dir * drift_amount
+
+	velocity -= vel_dir * drift_vector.length()
+	velocity += drift_vector
