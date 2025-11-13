@@ -63,7 +63,6 @@ script = ExtResource("1_vt42t")
 rotation_boost_curve = SubResource("Curve_vt42t")
 
 [node name="Model" parent="." instance=ExtResource("2_r61vp")]
-top_level = true
 script = ExtResource("3_uq5ii")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
