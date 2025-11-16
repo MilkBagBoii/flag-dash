@@ -1,30 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbxkvh3hc6i6b"]
+[gd_scene load_steps=4 format=3 uid="uid://dbxkvh3hc6i6b"]
 
 [ext_resource type="PackedScene" uid="uid://c2sdid7tv6x6w" path="res://Assets/FloatyFlag.glb" id="1_qce5m"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hfiwv"]
 load_path = "res://.godot/imported/FloatyFlag_FloatyFlag.png-9d9400f41f8f6839b37fa36fe9dbcb5a.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jhmrd"]
-render_priority = 1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.01
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q3ffx"]
 resource_name = "FloatyFlag"
-next_pass = SubResource("StandardMaterial3D_jhmrd")
 albedo_texture = SubResource("CompressedTexture2D_hfiwv")
 roughness = 0.5
 texture_filter = 0
-stencil_mode = 1
-stencil_flags = 2
 
 [node name="FloatyFlag" instance=ExtResource("1_qce5m")]
 

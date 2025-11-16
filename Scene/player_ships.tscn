@@ -15,13 +15,13 @@ shader_parameter/color_steps = 8.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_ar1yk"]
 shadow_size = 6
-shadow_color = Color(0, 0, 0, 0.5019608)
+shadow_color = Color(0, 0, 0, 0.501961)
 
 [node name="Ship" instance=ExtResource("1_457h8")]
 script = ExtResource("2_8068w")
 
 [node name="Camera3D" type="Camera3D" parent="." index="3"]
-transform = Transform3D(0.49648586, -0.5377493, 0.68141586, 0.0070440476, 0.7874709, 0.61631167, -0.86801624, -0.3011901, 0.39475608, 60.32001, 59.231003, 34.36828)
+transform = Transform3D(0.496486, -0.537749, 0.681416, 0.00704405, 0.787471, 0.616312, -0.868016, -0.30119, 0.394756, 60.32, 59.231, 34.3683)
 top_level = true
 projection = 1
 size = 82.214
@@ -54,7 +54,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -111.0
-offset_top = -142.39499
+offset_top = -142.395
 offset_right = 132.0
 offset_bottom = -63.0
 grow_horizontal = 2

@@ -1,32 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://byqoh578q7ic1"]
+[gd_scene load_steps=2 format=3 uid="uid://byqoh578q7ic1"]
 
 [ext_resource type="PackedScene" uid="uid://xuhwcmpj3of5" path="res://Assets/Water Craft Kit/boat-speed-h.glb" id="1_sfhmh"]
-[ext_resource type="Texture2D" uid="uid://b7r1kvc6bhjog" path="res://Assets/Water Craft Kit/Textures/colormap.png" id="2_ng3vx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i0y7"]
-render_priority = 1
-transparency = 1
-shading_mode = 0
-albedo_color = Color(0, 0, 0, 1)
-grow = true
-grow_amount = 0.05
-stencil_mode = 3
-stencil_flags = 1
-stencil_compare = 5
-metadata/_stencil_owned = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjaov"]
-next_pass = SubResource("StandardMaterial3D_1i0y7")
-albedo_texture = ExtResource("2_ng3vx")
-rim_tint = 1.0
-clearcoat = 0.0
-ao_light_affect = 0.28
-stencil_mode = 1
-stencil_flags = 2
-stencil_outline_thickness = 0.05
 
 [node name="boat-speed-h2" instance=ExtResource("1_sfhmh")]
 
 [node name="boat-speed-h" parent="." index="0"]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, -1.8684082)
-surface_material_override/0 = SubResource("StandardMaterial3D_fjaov")
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, -1.86841)
