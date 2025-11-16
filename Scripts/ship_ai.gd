@@ -51,46 +51,51 @@ func clear_weights():
 	TurnRight = 0.0
 
 func want_flag():
+	
+	var target: Node3D
+	
 	if (Game_Manager.current_holder != null):
-		if (Game_Manager.flag != null):
-			var forward: Vector3   = -global_transform.basis.z.normalized()
-			var to_target: Vector3 = (Game_Manager.current_holder.global_position - global_transform.origin).normalized()
-			forward.y = 0
-			to_target.y = 0
-			forward = forward.normalized()
-			to_target = to_target.normalized()
-			var cross: Vector3 = forward.cross(to_target)
-			var dot: float = forward.dot(to_target)
-			var angle: float = atan2(cross.y, dot) 
-			if (angle < 0):
-				TurnRight += 0.5
-				TurnLeft -= 0.5
-			elif (angle > 0):
-				TurnRight -= 0.5
-				TurnLeft += 0.5
+		target = Game_Manager.current_holder
+	elif (Game_Manager.flag != null):
+		target = Game_Manager.flag
 	else:
-		if (Game_Manager.flag != null):
-			var forward: Vector3   = -global_transform.basis.z.normalized()
-			var to_target: Vector3 = (Game_Manager.flag.global_position - global_transform.origin).normalized()
-			forward.y = 0
-			to_target.y = 0
-			forward = forward.normalized()
-			to_target = to_target.normalized()
-			var cross: Vector3 = forward.cross(to_target)
-			var dot: float = forward.dot(to_target)
-			var angle: float = atan2(cross.y, dot) 
-			
-			if (angle < 0):
-				TurnRight += 0.5
-				TurnLeft -= 0.5
-			elif (angle > 0):
-				TurnRight -= 0.5
-				TurnLeft += 0.5
-				
-			if (global_position.distance_to(Game_Manager.flag.global_position) > 0):
-				if (rad_to_deg(angle) < 90 || rad_to_deg(angle) > -90):
-					Reverse -= 0.5
-					Accelerate += 0.5
-				elif (rad_to_deg(angle) > 90 || rad_to_deg(angle) < -90):
-					Reverse += 0.5
-					Accelerate -= 0.5
+		return
+		
+	if (Game_Manager.current_holder == self):
+		return
+	
+	
+	var forward: Vector3   = -global_transform.basis.z.normalized()
+	var to_target: Vector3 = (target.global_position - global_transform.origin).normalized()
+	forward.y = 0
+	to_target.y = 0
+	forward = forward.normalized()
+	to_target = to_target.normalized()
+	var cross: Vector3 = forward.cross(to_target)
+	var dot: float = forward.dot(to_target)
+	var angle: float = atan2(cross.y, dot) 
+	if (angle < 0):
+		TurnRight += 0.5
+		TurnLeft -= 0.5
+	elif (angle > 0):
+		TurnRight -= 0.5
+		TurnLeft += 0.5
+	if (true):
+		if (rad_to_deg(angle) < 45 || rad_to_deg(angle) > -45):
+			Reverse -= 0.5
+			Accelerate += 0.5
+		elif (rad_to_deg(angle) > 45 || rad_to_deg(angle) < -45):
+			Reverse += 0.5
+			Accelerate -= 0.5
+		if (abs(rad_to_deg(angle)) > 15):
+			Brake += 0.8
+
+
+func i_got_it():
+	
+	if (Game_Manager.current_holder != self):
+		return
+		
+		
+	
+	
