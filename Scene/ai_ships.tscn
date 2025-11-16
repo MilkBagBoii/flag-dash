@@ -5,7 +5,5 @@
 
 [node name="AI_Ships" instance=ExtResource("1_g8j5r")]
 script = ExtResource("2_t1gok")
-acceleration = 10.0
-max_speed = 1.2
 
 [node name="Brain" type="NavigationAgent3D" parent="." index="3"]

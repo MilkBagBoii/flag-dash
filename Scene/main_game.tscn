@@ -60,5 +60,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095404625, 0.15876669, -22
 
 [node name="AI_Ships" parent="." instance=ExtResource("4_1btii")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.435032, 0, 12.325091)
-acceleration = 150.0
-max_speed = 100.0
+
+[node name="AI_Ships2" parent="." instance=ExtResource("4_1btii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.007574, 0, 11.995873)
+
+[node name="AI_Ships3" parent="." instance=ExtResource("4_1btii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.522667, 0, 2.5051165)
+
+[node name="AI_Ships4" parent="." instance=ExtResource("4_1btii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.676052, 0, 23.268608)

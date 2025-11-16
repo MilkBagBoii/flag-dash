@@ -32,18 +32,18 @@ func _process(delta: float) -> void:
 	determine_action()
 	super._process(delta)
 func determine_action():
-		if (Brake > Accelerate):
-			if (Brake > Reverse):
-				brake()
-			else:
-				accelerate_backward()
-		else:
-			accelerate_forward()
-			
-		if (TurnLeft > TurnRight):
-			turn_left()
-		else:
-			turn_right()
+	if (Accelerate < Reverse):
+		accelerate_backward()
+	elif (Accelerate > 0):
+		accelerate_forward()
+		
+	if (Brake > 0):
+		brake()
+		
+	if (TurnLeft > TurnRight):
+		turn_left()
+	else:
+		turn_right()
 func clear_weights():
 	Accelerate = 0.0
 	Brake = 0.0
@@ -76,19 +76,18 @@ func want_flag():
 	var angle: float = atan2(cross.y, dot) 
 	if (angle < 0):
 		TurnRight += 0.5
-		TurnLeft -= 0.5
 	elif (angle > 0):
-		TurnRight -= 0.5
 		TurnLeft += 0.5
 	if (true):
 		if (rad_to_deg(angle) < 45 || rad_to_deg(angle) > -45):
-			Reverse -= 0.5
 			Accelerate += 0.5
 		elif (rad_to_deg(angle) > 45 || rad_to_deg(angle) < -45):
 			Reverse += 0.5
-			Accelerate -= 0.5
-		if (abs(rad_to_deg(angle)) > 15):
+		if (abs(rad_to_deg(angle)) > 15 * randf_range(0,2)):
 			Brake += 0.8
+			Accelerate = 0
+			Reverse = 0
+		print(Accelerate)
 
 
 func i_got_it():
@@ -96,6 +95,6 @@ func i_got_it():
 	if (Game_Manager.current_holder != self):
 		return
 		
-		
+	
 	
 	

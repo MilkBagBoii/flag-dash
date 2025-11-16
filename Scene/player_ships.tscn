@@ -24,7 +24,7 @@ script = ExtResource("2_8068w")
 transform = Transform3D(0.49648586, -0.5377493, 0.68141586, 0.0070440476, 0.7874709, 0.61631167, -0.86801624, -0.3011901, 0.39475608, 60.32001, 59.231003, 34.36828)
 top_level = true
 projection = 1
-size = 26.990631
+size = 82.214
 near = 0.001
 script = ExtResource("3_8068w")
 
