@@ -59,4 +59,6 @@ mesh = SubResource("BoxMesh_1btii")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.095404625, 0.15876669, -22.186268)
 
 [node name="AI_Ships" parent="." instance=ExtResource("4_1btii")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.644048, 0, 2.743703)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.435032, 0, 12.325091)
+acceleration = 150.0
+max_speed = 100.0

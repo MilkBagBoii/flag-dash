@@ -6,7 +6,7 @@
 [sub_resource type="SphereShape3D" id="SphereShape3D_khqe1"]
 radius = 1.2099913
 
-[node name="Flag" type="Node3D"]
+[node name="Flag" type="Node3D" groups=["Flag"]]
 script = ExtResource("1_f0web")
 
 [node name="FloatyFlag" parent="." instance=ExtResource("2_f0web")]
