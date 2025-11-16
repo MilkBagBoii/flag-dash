@@ -10,7 +10,7 @@ var should_start = false
 func _process(delta: float) -> void:
 	
 	#this for testing
-	if (Input.is_action_just_pressed("ui_page_up")):
+	if (Input.is_action_just_pressed("ui_paste")):
 		should_start = true
 	if (should_start == false):
 		return
