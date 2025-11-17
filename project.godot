@@ -19,9 +19,14 @@ config/icon="res://icon.svg"
 
 Game_Manager="*res://Scripts/game_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [global_group]
 
 Flag=""
+HUD=""
 
 [physics]
 
@@ -30,7 +35,6 @@ common/physics_interpolation=true
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-textures/canvas_textures/default_texture_repeat=1
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/default_filters/anisotropic_filtering_level=0

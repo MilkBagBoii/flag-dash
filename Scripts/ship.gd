@@ -16,8 +16,18 @@ class_name Ship
 var holding_flag: bool = false
 var held_time: float = 0
 var points: int = 0
-var boatName : String
+@export var boatName : String = ("Boat")
 var time_accumulation : float = 0
+
+func _ready() -> void:
+	MakeUserBar()
+
+func MakeUserBar():
+	var UserBarScene = preload("res://Scene/ControlScenes/UserBar.tscn")
+	var Bar = UserBarScene.instantiate()
+	Bar.Build_User_Bar(self)
+	var hud = get_tree().get_first_node_in_group("HUD")
+	hud.get_node("Leaderboard/BarContainer/MarginContainer/VBoxContainer").add_child(Bar)
 
 func _process(delta: float) -> void:
 	#print((floor(rotation_boost_curve.sample(velocity.length() / max_speed))))

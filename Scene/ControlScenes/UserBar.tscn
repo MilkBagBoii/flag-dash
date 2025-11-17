@@ -1,0 +1,34 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnirliphn8ck1"]
+
+[ext_resource type="Script" uid="uid://di6vo5m46r6ye" path="res://Scripts/UserBarScript.gd" id="1_7d4l1"]
+
+[node name="UserBar" type="Control" node_paths=PackedStringArray("NLabel", "SLabel")]
+custom_minimum_size = Vector2(200, 20)
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 8
+script = ExtResource("1_7d4l1")
+NLabel = NodePath("Control/NameLabel")
+SLabel = NodePath("Control/ScoreLabel")
+
+[node name="Control" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NameLabel" type="Label" parent="Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 0
+text = "Name"
+
+[node name="ScoreLabel" type="Label" parent="Control"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Score"

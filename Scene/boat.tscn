@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://byqoh578q7ic1"]
 
-[ext_resource type="PackedScene" uid="uid://xuhwcmpj3of5" path="res://Assets/Water Craft Kit/boat-speed-h.glb" id="1_sfhmh"]
+[ext_resource type="PackedScene" uid="uid://cd3dmcod00uun" path="res://Assets/Water Craft Kit/boat-speed-h.glb" id="1_sfhmh"]
 
 [node name="boat-speed-h2" instance=ExtResource("1_sfhmh")]
 
