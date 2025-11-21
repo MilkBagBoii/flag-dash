@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b11t8kmpokeul"]
 
-[ext_resource type="Texture2D" uid="uid://dkvj0pjgon8tv" path="res://Assets/Sprites/UI_Flat_FrameSlot01c.png" id="1_3cjnh"]
+[ext_resource type="Texture2D" uid="uid://dkvj0pjgon8tv" path="res://Scene/ControlScenes/UI_Flat_FrameSlot01c.png" id="1_3cjnh"]
 
 [node name="Leaderboard" type="Control"]
 custom_minimum_size = Vector2(250, 250)

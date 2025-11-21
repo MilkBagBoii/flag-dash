@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://5hmcy1gd4kuw"]
+
+[ext_resource type="Texture2D" uid="uid://cqc5xx12rqh72" path="res://Assets/Sprites/UI_Flat_IconPlay01a.png" id="1_utllc"]
+[ext_resource type="Script" uid="uid://cpklwgo3qx0qv" path="res://Scripts/WarningArrowScript.gd" id="2_7gmha"]
+
+[node name="WarningArrow" type="TextureRect"]
+custom_minimum_size = Vector2(50, 50)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -566.0
+offset_top = -314.0
+offset_right = -516.0
+offset_bottom = -264.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_utllc")
+script = ExtResource("2_7gmha")

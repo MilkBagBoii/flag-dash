@@ -27,6 +27,8 @@ window/stretch/mode="canvas_items"
 
 Flag=""
 HUD=""
+Ships=""
+Camera=""
 
 [physics]
 

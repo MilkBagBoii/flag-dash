@@ -20,7 +20,7 @@ shadow_color = Color(0, 0, 0, 0.501961)
 [node name="Ship" instance=ExtResource("1_457h8")]
 script = ExtResource("2_8068w")
 
-[node name="Camera3D" type="Camera3D" parent="." index="3"]
+[node name="Camera3D" type="Camera3D" parent="." index="3" groups=["Camera"]]
 transform = Transform3D(0.496486, -0.537749, 0.681416, 0.00704405, 0.787471, 0.616312, -0.868016, -0.30119, 0.394756, 60.32, 59.231, 34.3683)
 top_level = true
 projection = 1
