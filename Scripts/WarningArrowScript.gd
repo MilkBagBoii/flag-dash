@@ -25,8 +25,8 @@ func _process(delta: float) -> void:
 		return
 
 	# Clamp arrow position to edges
-	var x = clamp(screen_pos.x, 30.0, viewport.x - 30.0)
-	var y = clamp(screen_pos.y, 30.0, viewport.y - 30.0)
+	var x = clamp(screen_pos.x, 50.0, viewport.x - 50.0)
+	var y = clamp(screen_pos.y, 50.0, viewport.y - 50.0)
 
 	position = Vector2(x, y)
 
